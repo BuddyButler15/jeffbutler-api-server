@@ -6,7 +6,12 @@ app = Flask(__name__)
 CORS(app)
 
 # Load model once when the app starts
-model = joblib.load("jeffbutler_salary_predict_model.pkl")
+import os
+
+BASE_DIR = os.path.dirname(__file__)
+MODEL_PATH = os.path.join(BASE_DIR, "jeffbutler_salary_predict_model.pkl")
+
+model = joblib.load(MODEL_PATH)
 
 
 @app.route("/")
